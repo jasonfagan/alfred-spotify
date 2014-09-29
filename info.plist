@@ -96,6 +96,28 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>ACBC7BB6-71D4-4117-88F0-237D83275055</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B6D23F4B-618C-48A8-A0BD-87BA6BAFB0EC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>B6D23F4B-618C-48A8-A0BD-87BA6BAFB0EC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>600B0A0D-A79D-4E7F-B0C5-8CE1144E9A5D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 		<key>BF94A45E-B6C2-4F92-B5DB-97AFC77B6BAE</key>
 		<array>
 			<dict>
@@ -212,6 +234,23 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>tell application "Spotify" to play</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>88DFCE59-1B8A-42B1-8ECF-14DF806C8DA9</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -234,14 +273,14 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>tell application "Spotify" to play</string>
+				<string>tell application "Spotify" to next track</string>
 				<key>type</key>
 				<integer>6</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>88DFCE59-1B8A-42B1-8ECF-14DF806C8DA9</string>
+			<string>D1E3B1EC-C409-4EE8-822F-93E764C1E485</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -261,23 +300,6 @@
 			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
 			<string>76E427F2-EAF9-45A5-8EEC-DDC257F119B1</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>tell application "Spotify" to next track</string>
-				<key>type</key>
-				<integer>6</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>D1E3B1EC-C409-4EE8-822F-93E764C1E485</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -306,6 +328,23 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
+				<string>tell application "Spotify" to previous track</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>462311F7-BD2C-47BA-8B68-C1BCDC1FE067</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
 				<string>tell application "Alfred 2"	run trigger "playing" in workflow "io.jmf.spotify"end tell</string>
 				<key>type</key>
 				<integer>6</integer>
@@ -323,33 +362,27 @@
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>tell application "Spotify" to previous track</string>
+				<string>tell application "Spotify"
+	set trackName to name of current track
+	set artistName to artist of current track
+	set albumName to album of current track
+	set msg to artistName
+	set msg to msg &amp; " - " &amp; trackName
+	set msg to msg &amp; "\n" &amp; albumName 
+
+	if player state as text is equal to "playing" then
+		return msg
+	end if
+end tell
+
+</string>
 				<key>type</key>
 				<integer>6</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>462311F7-BD2C-47BA-8B68-C1BCDC1FE067</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>sp:playing</string>
-				<key>text</key>
-				<string>What is playing now?</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>EBCBE4EE-6C75-4006-8699-BFBD4134A578</string>
+			<string>1D9F6DFC-C529-4F15-87F6-21411ED5A5A4</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -381,30 +414,19 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>tell application "Spotify"
-	set trackName to name of current track
-	set artistName to artist of current track
-	set albumName to album of current track
-	set msg to artistName
-	set msg to msg &amp; " - " &amp; trackName
-	set msg to msg &amp; "\n" &amp; albumName 
-
-	if player state as text is equal to "playing" then
-		return msg
-	end if
-end tell
-
-</string>
-				<key>type</key>
-				<integer>6</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>sp:playing</string>
+				<key>text</key>
+				<string>What is playing now?</string>
+				<key>withspace</key>
+				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>1D9F6DFC-C529-4F15-87F6-21411ED5A5A4</string>
+			<string>EBCBE4EE-6C75-4006-8699-BFBD4134A578</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -485,6 +507,23 @@ end tell
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>tell application "Spotify"	set shuffling to not shuffling	return "Shuffling is now " &amp; item ((shuffling as integer) + 1) of {"off", "on"}	end tell</string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>DB7A51C1-26DF-43ED-8DE0-F87098B72C4F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -507,14 +546,35 @@ end tell
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>script</key>
-				<string>tell application "Spotify"	set shuffling to not shuffling	return "Shuffling is now " &amp; item ((shuffling as integer) + 1) of {"off", "on"}	end tell</string>
+				<string>tell application "Spotify"	set the clipboard to spotify url of current track as textend tell
+
+return "Url is now on the clipboard"</string>
 				<key>type</key>
 				<integer>6</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>DB7A51C1-26DF-43ED-8DE0-F87098B72C4F</string>
+			<string>B6D23F4B-618C-48A8-A0BD-87BA6BAFB0EC</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>sp:url</string>
+				<key>text</key>
+				<string>Copies current track Url to clipboard</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>ACBC7BB6-71D4-4117-88F0-237D83275055</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -599,6 +659,16 @@ Jason Fagan</string>
 		<dict>
 			<key>ypos</key>
 			<real>130</real>
+		</dict>
+		<key>ACBC7BB6-71D4-4117-88F0-237D83275055</key>
+		<dict>
+			<key>ypos</key>
+			<real>970</real>
+		</dict>
+		<key>B6D23F4B-618C-48A8-A0BD-87BA6BAFB0EC</key>
+		<dict>
+			<key>ypos</key>
+			<real>970</real>
 		</dict>
 		<key>BF94A45E-B6C2-4F92-B5DB-97AFC77B6BAE</key>
 		<dict>
